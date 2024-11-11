@@ -5,6 +5,9 @@ import commonStyles from '~/styles/common-styles.module.scss';
 import { getUrlOriginWithPath } from '~/utils';
 import TypescriptSvg from '../../../src/assets/svg/typescript.svg';
 import ViteSvg from '../../../src/assets/svg/vite.svg';
+import MantineComponent from '../../../src/components/mantine-component/mantine-component';
+import { Button, MantineProvider } from '@mantine/core';
+import '@mantine/core/styles.css';
 
 export const loader = ({ request }: LoaderFunctionArgs) => {
     return { canonicalUrl: getUrlOriginWithPath(request.url) };
@@ -12,6 +15,10 @@ export const loader = ({ request }: LoaderFunctionArgs) => {
 
 export default function HomePage() {
     return (
+        <div>
+        <MantineProvider>
+        <Button>Hey</Button>
+        </MantineProvider>
         <div className={styles.root}>
             <h2 className={styles.title}>Welcome to your App Homepage 🎉</h2>
             <span>
@@ -24,6 +31,7 @@ export default function HomePage() {
                 <img src={TypescriptSvg} width="12" />
                 Visit vitejs.dev to learn more.{' '}
             </p>
+        </div>
         </div>
     );
 }
